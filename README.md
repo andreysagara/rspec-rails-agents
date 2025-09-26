@@ -39,6 +39,77 @@ These are specialized prompts/instructions that transform your AI coding assista
 
 ## 💡 How to Use
 
+## Requirements
+
+Your Rails application must have the following gems:
+
+```ruby
+group :test do
+  gem 'rspec-rails'
+  gem 'cuprite'
+  gem 'vcr'
+  gem 'simplecov', require: false    
+end
+```
+
+For `simplecov` you should have:
+
+In your `spec/spec_helper.rb`
+
+```ruby
+require 'simplecov'
+SimpleCov.start 'rails'
+```
+
+For `simplecov` to work with system tests, in your `bin/rails` right under the `#!`:
+
+```ruby
+#!/usr/bin/env ruby
+
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.start 'rails'
+end
+```
+
+In your `spec/rails_helper.rb` you should have (or the equivelent of):
+
+```ruby
+require "capybara/cuprite"
+
+Capybara.register_driver :cuprite do |app|
+  Capybara::Cuprite::Driver.new(app,
+                                window_size: [1400, 900],
+                                browser_options: {
+                                  'no-sandbox': nil,  # Required for Docker/CI
+                                  'disable-gpu': nil, # Helpful in CI environments
+                                  'disable-dev-shm-usage': nil
+                                },
+                                inspector: true, # Enable debugging in development
+                                headless: true) # Set to false for debugging
+end
+
+# Set Cuprite as the JavaScript driver
+Capybara.javascript_driver = :cuprite
+
+# For system specs
+RSpec.configure do |config|
+  config.before(:each, type: :system, js: true) do
+    driven_by :cuprite
+  end
+end
+
+# Setup Fixtures in RSpec
+RSpec.configure do |config|
+  # Fixtures path
+  config.fixture_paths = [
+    Rails.root.join('spec/fixtures')
+  ]
+
+  # etc...
+end
+```
+
 ### Basic Usage
 
 1. **Start with the orchestrator** to analyze what type of tests you need:
