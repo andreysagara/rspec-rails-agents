@@ -6,66 +6,6 @@ A collection of specialized AI agents designed to write comprehensive RSpec test
 
 These are specialized prompts/instructions that transform your AI coding assistant (Claude Code, Cursor, GitHub Copilot, etc.) into expert RSpec test writers. Each agent has deep knowledge of specific Rails testing patterns and will help you write better tests faster.
 
-## 📦 Installation & Setup
-
-### For Claude Code (Anthropic)
-
-Claude Code supports two configuration approaches:
-
-#### Option 1: Global Configuration (Apply to All Projects)
-
-1. Clone this repository to your global claude agents:
-```bash
-mkdir ~/.claude/tmp
-git clone --depth=1 https://github.com/aviflombaum/rspec-rails-agents.git ~/.claude/tmp/rspec-rails-agents
-mkdir ~/.claude/agents/
-
-cp ~/.claude/tmp/rspec-rails-agents/* ~/.claude/agents/
-rm -rf ~/.claude/tmp/rspec-rails-agents
-```
-
-Now the agents are available in all your projects via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
-
-#### Option 2: Project-Specific Configuration
-
-1. Clone the agents into your Rails project:
-```bash
-cd /path/to/your/rails/project
-git clone --depth=1 https://github.com/aviflombaum/rspec-agents.git .claude-agents
-```
-
-Now the agents are available for this project via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
-
-2. Optionally create or update your project's `CLAUDE.md` file:
-```bash
-cat >> CLAUDE.md << 'EOF'
-
-## RSpec Testing Agents
-
-This project includes specialized RSpec testing agents in .claude-agents/
-- Use .claude-agents/rspec-agent.md as the main orchestrator
-- Each agent handles specific Rails testing scenarios
-- Always start with the orchestrator for complex testing needs
-EOF
-```
-
-### For Cursor
-
-1. Add agent files to your `.cursorrules` directory:
-```bash
-mkdir -p .cursor/agents
-cp rspec-*.md /path/to/project/.cursor/agents/
-```
-
-2. Reference in your cursor instructions or directly in prompts
-
-### For GitHub Copilot
-
-1. Add to `.github/copilot-instructions.md`:
-```bash
-cat rspec-agent.md >> .github/copilot-instructions.md
-```
-
 ## 🤖 Available Agents
 
 ### 🎭 Master Orchestrator
@@ -188,6 +128,66 @@ your-rails-app/
 │   ├── fixtures/        # Test data fixtures
 │   └── support/         # Shared contexts, helpers
 └── rspec-*.md          # Agent instruction files
+```
+
+## 📦 Installation & Setup
+
+### For Claude Code (Anthropic)
+
+Claude Code supports two configuration approaches:
+
+#### Option 1: Global Configuration (Apply to All Projects)
+
+1. Clone this repository to your global claude agents:
+```bash
+mkdir ~/.claude/tmp
+git clone --depth=1 https://github.com/aviflombaum/rspec-rails-agents.git ~/.claude/tmp/rspec-rails-agents
+mkdir ~/.claude/agents/
+
+cp ~/.claude/tmp/rspec-rails-agents/* ~/.claude/agents/
+rm -rf ~/.claude/tmp/rspec-rails-agents
+```
+
+Now the agents are available in all your projects via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+
+#### Option 2: Project-Specific Configuration
+
+1. Clone the agents into your Rails project:
+```bash
+cd /path/to/your/rails/project
+git clone --depth=1 https://github.com/aviflombaum/rspec-agents.git .claude-agents
+```
+
+Now the agents are available for this project via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+
+2. Optionally create or update your project's `CLAUDE.md` file:
+```bash
+cat >> CLAUDE.md << 'EOF'
+
+## RSpec Testing Agents
+
+This project includes specialized RSpec testing agents in .claude-agents/
+- Use .claude-agents/rspec-agent.md as the main orchestrator
+- Each agent handles specific Rails testing scenarios
+- Always start with the orchestrator for complex testing needs
+EOF
+```
+
+### For Cursor
+
+1. Add agent files to your `.cursorrules` directory:
+```bash
+mkdir -p .cursor/agents
+cp rspec-*.md /path/to/project/.cursor/agents/
+```
+
+2. Reference in your cursor instructions or directly in prompts
+
+### For GitHub Copilot
+
+1. Add to `.github/copilot-instructions.md`:
+```bash
+cat rspec-agent.md >> .github/copilot-instructions.md
 ```
 
 ## 🤝 Contributing
