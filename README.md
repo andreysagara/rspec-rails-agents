@@ -6,6 +6,10 @@ A collection of specialized AI agents designed to write comprehensive RSpec test
 
 These are specialized prompts/instructions that transform your AI coding assistant (Claude Code, Cursor, GitHub Copilot, etc.) into expert RSpec test writers. Each agent has deep knowledge of specific Rails testing patterns and will help you write better tests faster.
 
+## 🏗️ How To Use Agents
+
+The current workflow is not exactly strict TDD. In order to write proper tests first, an architecture / API would need to be predictable or defined to test against. Since LLMs will be generating your code, the actual implementation you need to test against is non-deterministic unless you have defined an explicit and expected code outcome. Therefore, the effective use of these agents is to run them posthoc on the code that is being evaluated for production/use. YMMV. Do what works.
+
 ## 🤖 Available Agents
 
 ### 🎭 Master Orchestrator
