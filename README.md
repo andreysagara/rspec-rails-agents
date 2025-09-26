@@ -14,33 +14,29 @@ Claude Code supports two configuration approaches:
 
 #### Option 1: Global Configuration (Apply to All Projects)
 
-1. Clone this repository to a location you'll keep permanently:
+1. Clone this repository to your global claude agents:
 ```bash
-git clone https://github.com/yourusername/rspec-agents.git ~/rspec-agents
+mkdir ~/.claude/tmp
+git clone --depth=1 https://github.com/aviflombaum/rspec-rails-agents.git ~/.claude/tmp/rspec-rails-agents
+mkdir ~/.claude/agents/
+
+cp ~/.claude/tmp/rspec-rails-agents/* ~/.claude/agents/
+rm -rf ~/.claude/tmp/rspec-rails-agents
 ```
 
-2. Add agent references to your global Claude configuration file `~/.claude/CLAUDE.md`:
-```bash
-# Edit your global CLAUDE.md file
-echo "# RSpec Testing Agents" >> ~/.claude/CLAUDE.md
-echo "When working with RSpec tests, use the agents from ~/rspec-agents/" >> ~/.claude/CLAUDE.md
-echo "Start with ~/rspec-agents/rspec-agent.md as the orchestrator" >> ~/.claude/CLAUDE.md
-```
-
-3. Now the agents are available in all your projects. Use them with:
-```
-Use the Task tool to launch the RSpec Orchestrator agent from ~/rspec-agents/rspec-agent.md
-```
+Now the agents are available in all your projects via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
 
 #### Option 2: Project-Specific Configuration
 
 1. Clone the agents into your Rails project:
 ```bash
 cd /path/to/your/rails/project
-git clone https://github.com/yourusername/rspec-agents.git .claude-agents
+git clone --depth=1 https://github.com/aviflombaum/rspec-agents.git .claude-agents
 ```
 
-2. Create or update your project's `CLAUDE.md` file:
+Now the agents are available for this project via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+
+2. Optionally create or update your project's `CLAUDE.md` file:
 ```bash
 cat >> CLAUDE.md << 'EOF'
 
@@ -51,11 +47,6 @@ This project includes specialized RSpec testing agents in .claude-agents/
 - Each agent handles specific Rails testing scenarios
 - Always start with the orchestrator for complex testing needs
 EOF
-```
-
-3. Reference agents in your prompts:
-```
-Use the Task tool with the RSpec agent from .claude-agents/rspec-agent.md
 ```
 
 ### For Cursor
@@ -226,6 +217,7 @@ These agents are built on community best practices from:
 - The Rails and RSpec communities
 - Testing patterns from [Thoughtbot](https://thoughtbot.com/blog)
 - [Evil Martians](https://evilmartians.com/) testing guides
+- [Everyday Rails Testing with RSpec](https://leanpub.com/everydayrailsrspec)
 - Countless open source Rails projects
 
 ---
