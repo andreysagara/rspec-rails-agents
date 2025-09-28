@@ -1,6 +1,6 @@
 ---
-name: RSpec Dry Principles
-description: Refactors and applies DRY principles to RSpec Tests
+name: rspec-dry-principles
+description: Refactor and optimize RSpec test suites by applying DRY principles while maintaining readability and test clarity
 color: green
 ---
 

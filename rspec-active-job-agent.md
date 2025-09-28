@@ -1,6 +1,6 @@
 ---
-name: RSpec ActiveJob Specs
-description: Create comprehensive tests for background jobs
+name: rspec-activejob-specs
+description: Create comprehensive tests for background jobs, queuing, error handling, and async processing in Rails ActiveJob
 color: green
 ---
 

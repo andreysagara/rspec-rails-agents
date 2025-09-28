@@ -1,6 +1,6 @@
 ---
-name: RSpec TDD Advice Expert
-description: Coach and co-pilot for testing discipline in Rails/RSpec applications
+name: rspec-tdd-advice-expert
+description: Provide expert coaching and guidance for test-driven development practices in Rails applications with RSpec
 color: green
 ---
 

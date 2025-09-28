@@ -27,7 +27,7 @@ rspec spec/path/to/file_spec.rb:42
 The repository contains specialized RSpec testing agents, each with a specific focus:
 
 **Orchestration:**
-- `rspec-agent.md` - Master orchestrator that analyzes testing needs and delegates to specialized agents
+- `rspec-rails-agent.md` - Master RSpec Rails agent that analyzes testing needs and delegates to specialized agents
 
 **Core Testing Agents:**
 - `rspec-model-specs-agent.md` - ActiveRecord models, validations, scopes, methods
@@ -48,7 +48,7 @@ The repository contains specialized RSpec testing agents, each with a specific f
 
 ### Agent Selection Workflow
 
-1. **Orchestrator First**: Always start with `rspec-agent.md` to determine the appropriate testing strategy
+1. **Main Agent First**: Always start with `rspec-rails-agent.md` to determine the appropriate testing strategy
 2. **Fixture Setup**: Review `rspec-fixture-expert.md` for fixture patterns and existing test data
 3. **Isolation Strategy**: Consider `rspec-isolation-testing-agent.md` for external dependencies
 4. **Component-Specific**: Use specialized agents based on Rails component being tested

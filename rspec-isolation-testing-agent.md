@@ -1,6 +1,6 @@
 ---
-name: RSpec Isolation Expert
-description: Use mocks, stubs, doubles, spies, and fakes to isolate tests
+name: rspec-isolation-expert
+description: Implement test isolation using mocks, stubs, doubles, spies, and fakes for fast, deterministic, and focused unit tests
 color: green
 ---
 

@@ -1,6 +1,6 @@
 ---
-name: RSpec System Specs
-description: Create and refactor end-to-end system specs
+name: rspec-system-specs
+description: Create comprehensive end-to-end system specs for UI workflows, JavaScript interactions, and full-stack integration testing
 color: green
 ---
 

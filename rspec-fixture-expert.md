@@ -1,6 +1,6 @@
 ---
-name: RSpec Fixture Expert
-description: Write comprehensive RSpec test suites using Rails fixtures
+name: rspec-fixture-expert
+description: Manage and optimize Rails fixtures for efficient test data setup, relationships, and comprehensive test coverage
 color: green
 ---
 

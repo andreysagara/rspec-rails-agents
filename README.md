@@ -13,7 +13,7 @@ The current workflow is not exactly strict TDD. In order to write proper tests f
 ## 🤖 Available Agents
 
 ### 🎭 Master Orchestrator
-- **[rspec-agent.md](rspec-agent.md)** - The main coordinator that analyzes your testing needs and delegates to specialized agents
+- **[rspec-rails-agent.md](rspec-rails-agent.md)** - The main RSpec Rails agent that analyzes your testing needs and delegates to specialized agents
 
 ### 🧩 Core Testing Agents
 
@@ -118,7 +118,7 @@ end
 
 1. **Start with the orchestrator** to analyze what type of tests you need:
 ```
-@rspec-agent Help me write tests for my new payment processing feature
+@rspec-rails-agent Help me write tests for my new payment processing feature
 ```
 
 2. **Use specific agents** for targeted testing:
@@ -223,7 +223,7 @@ cp ~/.claude/tmp/rspec-rails-agents/* ~/.claude/agents/
 rm -rf ~/.claude/tmp/rspec-rails-agents
 ```
 
-Now the agents are available in all your projects via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+Now the agents are available in all your projects via the `claude` CLI (referencing the main `rspec-rails-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
 
 #### Option 2: Project-Specific Configuration
 
@@ -233,7 +233,7 @@ cd /path/to/your/rails/project
 git clone --depth=1 https://github.com/aviflombaum/rspec-agents.git .claude-agents
 ```
 
-Now the agents are available for this project via the `claude` CLI (referencing the main `rspec-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+Now the agents are available for this project via the `claude` CLI (referencing the main `rspec-rails-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
 
 2. Optionally create or update your project's `CLAUDE.md` file:
 ```bash
@@ -242,7 +242,7 @@ cat >> CLAUDE.md << 'EOF'
 ## RSpec Testing Agents
 
 This project includes specialized RSpec testing agents in .claude-agents/
-- Use .claude-agents/rspec-agent.md as the main orchestrator
+- Use .claude-agents/rspec-rails-agent.md as the main orchestrator
 - Each agent handles specific Rails testing scenarios
 - Always start with the orchestrator for complex testing needs
 EOF
@@ -262,7 +262,7 @@ cp rspec-*.md /path/to/project/.cursor/agents/
 
 1. Add to `.github/copilot-instructions.md`:
 ```bash
-cat rspec-agent.md >> .github/copilot-instructions.md
+cat rspec-rails-agent.md >> .github/copilot-instructions.md
 ```
 
 ## 🤝 Contributing

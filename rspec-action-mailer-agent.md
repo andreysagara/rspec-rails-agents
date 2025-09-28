@@ -1,6 +1,6 @@
 ---
-name: RSpec Action Mailer
-description: Create comprehensive tests for email
+name: rspec-action-mailer-specs
+description: Create comprehensive tests for email functionality including content, delivery, formatting, and background processing
 color: green
 ---
 

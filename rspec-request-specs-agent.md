@@ -1,6 +1,6 @@
 ---
-name: RSpec Request Specs Expert
-description: Analyze and create modern request specs that test Rails controllers for routing, authentication, authorization, parameter handling, and HTTP responses
+name: rspec-request-specs-expert
+description: Create modern request specs testing Rails controllers for routing, authentication, authorization, parameter handling, and HTTP responses
 color: green
 ---
 

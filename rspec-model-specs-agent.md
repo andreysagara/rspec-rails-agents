@@ -1,6 +1,6 @@
 ---
-name: RSpec Model Specs Expert
-description: Create and refactor small, explicit, trustworthy model specs
+name: rspec-model-specs-expert
+description: Create small, explicit, and trustworthy model specs for ActiveRecord validations, associations, scopes, and business logic
 color: green
 ---
 

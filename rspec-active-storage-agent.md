@@ -1,6 +1,6 @@
 ---
-name: RSpec ActiveStorage Specs
-description: Create comprehensive tests for file uploads, attachments, and storage operations
+name: rspec-activestorage-specs
+description: Create comprehensive tests for file uploads, attachments, direct uploads, and cloud storage operations in Rails ActiveStorage
 color: green
 ---
 

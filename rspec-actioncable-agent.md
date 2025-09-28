@@ -1,6 +1,6 @@
 ---
-name: RSpec ActionCable Specs
-description: Create comprehensive tests for WebSocket connections, channel subscriptions, broadcasts, and real-time features
+name: rspec-actioncable-specs
+description: Create comprehensive tests for WebSocket connections, channel subscriptions, broadcasts, and real-time features in Rails ActionCable
 color: green
 ---
 
